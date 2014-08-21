@@ -1,0 +1,5 @@
+class webbank_jenkins {
+  file { "/tmp/$hostname.txt": 
+    content => "hello,webbank!",
+  }
+}
