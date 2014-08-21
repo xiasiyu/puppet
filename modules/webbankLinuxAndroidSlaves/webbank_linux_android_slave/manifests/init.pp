@@ -994,4 +994,11 @@ class webbank_linux_android_slave {
     path     => ['/usr/bin','/usr/sbin','/bin'],
 	command  => 'mkdir -p /data/rdm/apps/cov-analysis; chown rdm:rdm /data/rdm -R;cd /data/rdm/apps/cov-analysis;wget "http://10.12.198.89:8080/glu/repository/tgzs/cov-analysis-linux64-7.0.3.gz";tar xzfv cov-analysis-linux64-7.0.3.gz;chown rdm:rdm cov-analysis-linux64-7.0.3 -R';
   }
+
+  #------------------------------install gulp-------------------------------------
+
+  package {
+    'npm':
+      ensure => present
+  }
 }
