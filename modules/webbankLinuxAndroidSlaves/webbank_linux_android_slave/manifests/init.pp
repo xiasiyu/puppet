@@ -1001,4 +1001,8 @@ class webbank_linux_android_slave {
     'npm':
       ensure => present
   }
+
+  exec { 'gulp':
+    command => 'npm install --global gulp'
+  }
 }
