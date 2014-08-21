@@ -1003,6 +1003,8 @@ class webbank_linux_android_slave {
   }
 
   exec { 'gulp':
+    require => package['npm'],
+      path     => ['/usr/bin','/usr/sbin','/bin'],
     command => 'npm install --global gulp'
   }
 }
