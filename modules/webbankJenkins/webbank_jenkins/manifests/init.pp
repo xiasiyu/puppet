@@ -23,7 +23,7 @@ class webbank_jenkins {
     owner    => rdm,
     group    => rdm,
     require  => Exec['resin deploy'],
-    source   => 'puppet:///modules/webbank_jenkins/resin/resin.properties';
+    content  => template("webbank_jenkins/resin.properties.erb");
   }
  
   file { 'resin.sh':
