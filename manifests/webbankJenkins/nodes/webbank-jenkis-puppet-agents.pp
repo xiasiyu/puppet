@@ -1,4 +1,4 @@
-node /webank-jenkins-puppet-agent-.*.wsd.com/ {
+node /webbank-jenkins-puppet-agent-.*.wsd.com/ {
   include webbank_jenkins
 }
 
