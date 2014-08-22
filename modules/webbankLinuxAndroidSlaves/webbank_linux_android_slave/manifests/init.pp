@@ -1007,4 +1007,28 @@ class webbank_linux_android_slave {
       path     => ['/usr/bin','/usr/sbin','/bin'],
     command => 'npm install --global gulp; npm run gulp'
   }
+
+
+  #------------------------------install gradle------------------------------
+  file { 'gradle2.0 package':
+    name    => '/data/rdm/apps/gradle/gradle-2.0-all.zip',
+    ensure  => present,
+  require => Exec['mkdir apps sub dir'],
+    owner   => rdm,
+    group   => rdm,
+    source  => 'puppet:///modules/webbank_linux_android_slave/gradle/gradle-2.0-all.zip';
+  }
+
+  exec { 'gradle':
+    cwd      => '/data/rdm/apps/gradle',
+  require  => File['gradle2.0 package'],
+    path     => ['/usr/bin','/usr/sbin','/bin'],
+  command  => 'unzip gradle-2.0-all.zip';
+  }
+  
+  file { '/usr/local/bin/gradle':
+    ensure  => 'link',
+  target  => '/data/rdm/apps/gradle/gradle-2.0/bin/gradle',
+  require => Exec['gradle'];
+  }
 }
