@@ -30,7 +30,6 @@ class webbank_linux_android_slave {
   
   exec { 'mkdir apps sub dir':
     cwd      => '/data/rdm/apps',
-	creates  => '/data/rdm/apps/python',
 	require  => Exec['apps path'],
     path     => ['/usr/bin','/usr/sbin','/bin'],
 	command  => 'mkdir {python,7zip,maven,ant,jdk,sdk,ndk,proguard,git,svn,sdk/platforms,gradle};chown rdm:rdm * -R';
