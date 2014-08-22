@@ -297,14 +297,14 @@ class webbank_linux_android_slave {
   
   file { '/usr/bin/java':
     ensure  => 'link',
-	target  => '/data/rdm/apps/jdk/jdk1.6.0_45/bin/java',
-	require => Exec['jdk 1.6.0.45'];
+	target  => '/data/rdm/apps/jdk/jdk1.7.0_60/bin/java',
+	require => Exec['jdk 1.7.0.60'];
   }
     
   file { '/usr/local/jdk':
     ensure  => 'link',
-	target  => '/data/rdm/apps/jdk/jdk1.6.0_45',
-	require => Exec['jdk 1.6.0.45'];
+	target  => '/data/rdm/apps/jdk/jdk1.7.0_60',
+	require => Exec['jdk 1.7.0.60'];
   }
   
   file { 'jdk profile':
