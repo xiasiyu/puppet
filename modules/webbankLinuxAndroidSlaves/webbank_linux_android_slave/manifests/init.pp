@@ -32,7 +32,7 @@ class webbank_linux_android_slave {
     cwd      => '/data/rdm/apps',
 	require  => Exec['apps path'],
     path     => ['/usr/bin','/usr/sbin','/bin'],
-	command  => 'mkdir {python,7zip,maven,ant,jdk,sdk,ndk,proguard,git,svn,sdk/platforms,gradle};chown rdm:rdm * -R';
+	command  => 'mkdir {python,7zip,maven,ant,jdk,sdk,ndk,proguard,git,svn,sdk/platforms,gradle,mumble};chown rdm:rdm * -R';
   }
   
   
@@ -1029,5 +1029,21 @@ class webbank_linux_android_slave {
     ensure  => 'link',
   target  => '/data/rdm/apps/gradle/gradle-2.0/bin/gradle',
   require => Exec['gradle'];
+  }
+
+  #------------------------------install mumble------------------------------
+  exec { 'mumble package':
+    cwd      => '/data/rdm/apps/mumble',
+  creates  => '/data/rdm/apps/mumble/mumble.tgz',
+  require  => Exec['mkdir apps sub dir'],
+    path     => ['/usr/bin','/usr/sbin','/bin'],
+  command  => 'wget "http://10.12.222.54:8080/job/mumble/lastSuccessfulBuild/artifact/dist/mumble.tgz"';
+  }
+  
+  exec { 'mumble':
+    cwd      => '/data/rdm/apps/mumble',
+  require  => Exec['mumble package'],
+    path     => ['/usr/bin','/usr/sbin','/bin'],
+  command  => 'tar xzvf mumble.tgz; ./install';
   }
 }
