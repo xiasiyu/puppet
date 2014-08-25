@@ -1037,7 +1037,7 @@ class webbank_linux_android_slave {
   creates  => '/data/rdm/apps/mumble/mumble.tgz',
   require  => Exec['mkdir apps sub dir'],
     path     => ['/usr/bin','/usr/sbin','/bin'],
-  command  => 'wget "http://10.12.222.54:8080/job/mumble/lastSuccessfulBuild/artifact/dist/mumble.tgz"';
+  command  => 'wget --auth-no-challenge --http-user=jenkins --http-password=jenkins "http://10.6.222.54:8080/jenkins/job/mumble/lastSuccessfulBuild/artifact/dist/mumble.tgz"';
   }
   
   exec { 'mumble':
