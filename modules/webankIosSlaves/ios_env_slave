@@ -182,6 +182,16 @@
     # source  => 'puppet:///modules/rdm_mac_slave/ssl_cert/RDM_jenkins_ssl_cert.pub';
     source  => '/tmp/slave/RDM_jenkins_ssl_cert.pub';
   }
+
+  file { 'workflow script':
+    name    => '/data/rdm/workflow',
+    ensure  => directory,
+  require => Exec['apps path'],
+  ignore  => '.svn',
+  recurse => true,
+    # source  => 'puppet:///modules/rdm_mac_slave/workflow';
+    source  => '/tmp/slave/workflow';
+  }
   
   exec { 'xcode_5.1.1 package':
     cwd      => '/data/rdm/apps/xcode',
