@@ -6,7 +6,7 @@ file { 'resin package':
   owner   => rdm,
   group   => rdm,
   require => Exec['mkdir apps sub dir'],
-  source  => 'puppet:///modules/webbank_jenkins/resin/resin-4.0.27.tar.gz';
+  source  => 'puppet:///modules/jenkins_master/resin/resin-4.0.27.tar.gz';
 }
 
 exec { 'resin deploy':
@@ -23,7 +23,7 @@ file { 'resin config':
   owner    => rdm,
   group    => rdm,
   require  => Exec['resin deploy'],
-  content  => template("webbank_jenkins/resin.properties.erb");
+  content  => template("jenkins_master/resin.properties.erb");
 }
 
 file { 'resin.sh':
@@ -33,7 +33,7 @@ file { 'resin.sh':
   mode     => 755,
   group    => rdm,
   require  => File['resin config'],
-  source   => 'puppet:///modules/webbank_jenkins/resin/resin.sh';
+  source   => 'puppet:///modules/jenkins_master/resin/resin.sh';
 }
 
 exec { 'start resin':
@@ -52,7 +52,7 @@ file { 'jenkins package':
   owner   => rdm,
   group   => rdm,
   require => File['/usr/local/jdk'],
-  source  => 'puppet:///modules/webbank_jenkins/jenkins/jenkins.tar.gz';
+  source  => 'puppet:///modules/jenkins_master/jenkins/jenkins.tar.gz';
 }
 
 exec { 'jenkins deploy':
@@ -80,7 +80,7 @@ file { 'jenkins plugins':
   group   => mqq,
   require => Exec['jenkins config'],
   recurse => true,
-  source  => 'puppet:///modules/webbank_jenkins/plugins';
+  source  => 'puppet:///modules/jenkins_master/plugins';
 }
 
 }
