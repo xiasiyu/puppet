@@ -64,8 +64,8 @@ class webank_ios_slave {
     name    => '/data/rdm/apps/maven/apache-maven-3.2.1-bin.tar.gz',
     ensure  => file,
 	require => Exec['mkdir apps sub dir'],
-    # source  => 'puppet:///modules/rdm_mac_slave/maven/apache-maven-3.2.1-bin.tar.gz';
-    source  => '/tmp/slave/apache-maven-3.2.1-bin.tar.gz';
+    source  => 'puppet:///modules/rdm_mac_slave/maven/apache-maven-3.2.1-bin.tar.gz';
+    #source  => '/tmp/slave/apache-maven-3.2.1-bin.tar.gz';
   }
   
   exec { 'maven-3.2.1':
@@ -91,8 +91,8 @@ class webank_ios_slave {
     name    => '/data/rdm/apps/ant/apache-ant-1.9.3.tar.gz',
     ensure  => file,
 	require => Exec['mkdir apps sub dir'],
-    # source  => 'puppet:///modules/rdm_mac_slave/ant/apache-ant-1.9.3.tar.gz';
-    source  => '/tmp/slave/apache-ant-1.9.3.tar.gz';
+    source  => 'puppet:///modules/rdm_mac_slave/ant/apache-ant-1.9.3.tar.gz';
+    #source  => '/tmp/slave/apache-ant-1.9.3.tar.gz';
   }
 
   
@@ -120,8 +120,8 @@ class webank_ios_slave {
     name    => '/data/rdm/apps/git/git-1.9.2.tar.gz',
     ensure  => file,
 	require => Exec['mkdir apps sub dir'],
-    # source  => 'puppet:///modules/rdm_mac_slave/git/git-1.9.2.tar.gz';
-    source => '/tmp/slave/git-1.9.2.tar.gz';
+    source  => 'puppet:///modules/rdm_mac_slave/git/git-1.9.2.tar.gz';
+    #source => '/tmp/slave/git-1.9.2.tar.gz';
   }
   
   exec { 'git 1.9.2':
@@ -180,8 +180,8 @@ class webank_ios_slave {
     ensure  => file,
 	require => File['ssh path'],
 	mode    => 600,
-    # source  => 'puppet:///modules/rdm_mac_slave/ssl_cert/RDM_jenkins_ssl_cert.pub';
-    source  => '/tmp/slave/RDM_jenkins_ssl_cert.pub';
+    source  => 'puppet:///modules/rdm_mac_slave/ssl_cert/RDM_jenkins_ssl_cert.pub';
+    #source  => '/tmp/slave/RDM_jenkins_ssl_cert.pub';
   }
 
   file { 'workflow script':
@@ -190,8 +190,8 @@ class webank_ios_slave {
   require => Exec['apps path'],
   ignore  => '.svn',
   recurse => true,
-    # source  => 'puppet:///modules/rdm_mac_slave/workflow';
-    source  => '/tmp/slave/workflow';
+    source  => 'puppet:///modules/rdm_mac_slave/workflow';
+    #source  => '/tmp/slave/workflow';
   }
   
   exec { 'xcode_5.1.1 package':
