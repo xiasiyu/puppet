@@ -1,3 +1,3 @@
-node ppagent1 {
+node /\w.*/ {
   include verify_puppet_installation
 }
