@@ -1,3 +1,4 @@
+class webank_ios_slave {
  Exec {
   path => ['/usr/bin','/usr/sbin','/bin', '/usr/local/bin', '/usr/local/share/bin']
  }
@@ -195,3 +196,4 @@
 	require  => Exec['xcode_5.1.1 package'],
 	command  => 'hdiutil attach /data/rdm/apps/xcode/xcode_5.1.1.dmg -nomount;';
   }
+}
